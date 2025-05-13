@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Biblioteka{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h1 class="mb-4 text-center">📚 Biblioteka Cyfrowa</h1>
+    <div class="mb-3 text-end">
+        {% if user.is_authenticated %}
+            Witaj, {{ user.username }}!
+          <form action="{% url 'logout' %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger btn-sm">Wyloguj</button>
+          </form>
+          <a href="{% url 'my_borrows' %}" class="btn btn-outline-dark btn-sm">📚 Mój ekwipunek</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">Zaloguj</a>
+            <a href="{% url 'register' %}" class="btn btn-outline-success btn-sm">Zarejestruj się</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

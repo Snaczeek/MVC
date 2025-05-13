@@ -1,0 +1,12 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Formularz książki{% endblock %}
+
+{% block content %}
+<form method="post" class="card p-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a href="{% url 'book_list' %}" class="btn btn-secondary">Anuluj</a>
+</form>
+{% endblock %}
