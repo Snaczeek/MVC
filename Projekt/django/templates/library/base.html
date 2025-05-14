@@ -7,19 +7,27 @@
 </head>
 <body class="container mt-4">
     <h1 class="mb-4 text-center">📚 Biblioteka Cyfrowa</h1>
-    <div class="mb-3 text-end">
-        {% if user.is_authenticated %}
-            Witaj, {{ user.username }}!
-          <form action="{% url 'logout' %}" method="post" style="display: inline;">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-outline-danger btn-sm">Wyloguj</button>
-          </form>
-          <a href="{% url 'my_borrows' %}" class="btn btn-outline-dark btn-sm">📚 Mój ekwipunek</a>
-        {% else %}
-            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">Zaloguj</a>
-            <a href="{% url 'register' %}" class="btn btn-outline-success btn-sm">Zarejestruj się</a>
+    <nav class="navbar navbar-expand-lg navbar-light px-4">
+        {% if user.is_superuser %}
+        <div class="me-auto d-flex gap-2">
+            <a href="{% url 'book_create' %}" class="btn btn-sm btn-outline-success">Dodaj książkę</a>
+            <a href="{% url 'author_create' %}" class="btn btn-sm btn-outline-primary">Dodaj autora</a>
+        </div>
         {% endif %}
-    </div>
+        <div class="ms-auto d-flex align-items-center gap-2">
+            {% if user.is_authenticated %}
+                <span class="me-2">Witaj, {{ user.username }}!</span>
+                <a href="{% url 'my_borrows' %}" class="btn btn-sm btn-outline-dark">📚 Moje książki</a>
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Wyloguj</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-sm btn-outline-primary">Zaloguj</a>
+                <a href="{% url 'register' %}" class="btn btn-sm btn-outline-success">Zarejestruj się</a>
+            {% endif %}
+        </div>
+    </nav>
     {% block content %}
     {% endblock %}
 </body>

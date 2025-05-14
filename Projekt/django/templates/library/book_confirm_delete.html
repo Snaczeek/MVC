@@ -1,0 +1,14 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Usuń książkę{% endblock %}
+
+{% block content %}
+<h2>Potwierdź usunięcie</h2>
+<p>Czy na pewno chcesz usunąć książkę: <strong>{{ book.title }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Tak, usuń</button>
+    <a href="{% url 'book_list' %}" class="btn btn-secondary">Anuluj</a>
+</form>
+{% endblock %}

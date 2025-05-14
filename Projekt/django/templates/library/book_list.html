@@ -3,10 +3,6 @@
 {% block title %}Lista książek{% endblock %}
 
 {% block content %}
-{% if user.is_superuser %}
-  <a href="{% url 'book_create' %}" class="btn btn-success mb-3">Dodaj książkę</a>
-  <a href="{% url 'author_create' %}" class="btn btn-outline-primary mb-3">Dodaj autora</a>
-{% endif %}
 <table class="table table-striped">
     <thead>
         <tr>
@@ -32,10 +28,11 @@
             </td>
             <td>
               {% if user.is_superuser %}
-                <a href="{% url 'book_edit' book.id %}" class="btn btn-sm btn-primary">Edytuj</a>
+                <a href="{% url 'book_edit' book.id %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                <a href="{% url 'book_delete' book.id %}" class="btn btn-sm btn-outline-danger">Usuń</a>
               {% endif %}
               {% if not book.is_borrowed %}
-                <a href="{% url 'borrow_book' book.id %}" class="btn btn-sm btn-outline-success">Wypożycz</a>
+                <a href="{% url 'book_borrow' book.id %}" class="btn btn-sm btn-outline-success">Wypożycz</a>
               {% endif %}
             </td>
         </tr>

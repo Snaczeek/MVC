@@ -20,7 +20,7 @@
             <td>{{ borrow.book.title }}</td>
             <td>{{ borrow.date }}</td>
             <td>
-                <form method="post" action="{% url 'return_book' borrow.id %}">
+                <form method="post" action="{% url 'book_return' borrow.id %}">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-sm btn-danger">Oddaj</button>
                 </form>
