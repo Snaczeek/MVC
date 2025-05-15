@@ -12,7 +12,7 @@ def is_admin(user):
 
 @login_required
 def book_list(request):
-    books = Book.objects.select_related('author').all()
+    books = Book.objects.all()
     return render(request, 'library/book_list.html', {'books': books})
 
 @user_passes_test(is_admin)
@@ -77,7 +77,7 @@ def book_return(request, pk):
 
 @login_required
 def my_borrows(request):
-    borrows = Borrow.objects.filter(user=request.user).select_related('book')
+    borrows = Borrow.objects.filter(user=request.user).all()
     return render(request, 'library/my_borrows.html', {'borrows': borrows})
 
 @user_passes_test(is_admin)
