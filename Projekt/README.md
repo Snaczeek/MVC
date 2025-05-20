@@ -1,4 +1,4 @@
-# 📚 Biblioteka Cyfrowa
+# 📚 System zarządzania cyfrową biblioteką
 
 ## 📄 Spis treści
 
@@ -12,7 +12,7 @@
 
 ---
 
-## 📋 Opis projektu
+## Opis projektu
 
 **Biblioteka Cyfrowa** to aplikacja webowa stworzona w Django, służąca do zarządzania książkami, autorami i wypożyczeniami. Użytkownicy mogą wypożyczać i oddawać książki, a administratorzy zarządzać katalogiem.
 
@@ -20,7 +20,7 @@ Projekt uruchamiany jest za pomocą kontenerów Docker.
 
 ---
 
-## ✅ Funkcjonalności
+## Funkcjonalności
 
 * 🔐 Rejestracja i logowanie użytkowników
 * 📚 Przeglądanie listy książek
@@ -35,7 +35,7 @@ Projekt uruchamiany jest za pomocą kontenerów Docker.
 
 ---
 
-## 📁 Struktura katalogów
+## Struktura katalogów
 
 ```
 Projekt/
@@ -53,7 +53,7 @@ Projekt/
 
 ---
 
-## 🐳 Instrukcja uruchomienia w Dockerze
+## Instrukcja uruchomienia w Dockerze
 
 1. Zainstaluj docker desktop: https://www.docker.com/
 
@@ -81,7 +81,7 @@ Projekt/
 
 ---
 
-## 👨‍💻 Użytkowanie
+## Użytkowanie
 
 * 🔐 Zaloguj się lub zarejestruj
 * 📚 Przeglądaj dostępne książki
@@ -92,7 +92,7 @@ Projekt/
 
 ---
 
-## 🧪 Testowanie
+## Testowanie
 
 Aby uruchomić testy jednostkowe:
 
@@ -102,7 +102,7 @@ docker-compose run web python manage.py test
 
 ---
 
-## 📝 Wymagania
+## Wymagania
 
 * Docker
 * Docker Compose
@@ -110,7 +110,7 @@ docker-compose run web python manage.py test
 
 ---
 
-## 🗂️ Konta domyślne
+## Konta domyślne
 [konto administratora]
 * login: admin 
 * hasło: 123
