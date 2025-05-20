@@ -1,0 +1,42 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Lista książek{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Rok</th>
+            <th>Dostępna?</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author.name}}</td>
+            <td>{{ book.year }}</td>
+            <td>
+                {% if book.is_borrowed %}
+                    <span class="badge bg-danger">Nie</span>
+                {% else %}
+                    <span class="badge bg-success">Tak</span>
+                {% endif %}
+            </td>
+            <td>
+              {% if user.is_superuser %}
+                <a href="{% url 'book_edit' book.id %}" class="btn btn-sm btn-outline-primary">Edytuj</a>
+                <a href="{% url 'book_delete' book.id %}" class="btn btn-sm btn-outline-danger">Usuń</a>
+              {% endif %}
+              {% if not book.is_borrowed %}
+                <a href="{% url 'book_borrow' book.id %}" class="btn btn-sm btn-outline-success">Wypożycz</a>
+              {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

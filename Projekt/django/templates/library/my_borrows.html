@@ -1,0 +1,37 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Mój ekwipunek{% endblock %}
+
+{% block content %}
+<h2>Aktualnie wypożyczone książki</h2>
+
+{% if borrows %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Data wypożyczenia</th>
+            <th>Akcja</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for borrow in borrows %}
+        <tr>
+            <td>{{ borrow.book.title }}</td>
+            <td>{{ borrow.date }}</td>
+            <td>
+                <form method="post" action="{% url 'book_return' borrow.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-danger">Oddaj</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Nie masz aktualnie wypożyczonych książek.</p>
+{% endif %}
+
+<a href="{% url 'book_list' %}" class="btn btn-secondary">Powrót</a>
+{% endblock %}
