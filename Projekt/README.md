@@ -55,25 +55,29 @@ Projekt/
 
 ## 🐳 Instrukcja uruchomienia w Dockerze
 
-1. Zbuduj kontener:
+1. Zainstaluj docker desktop: https://www.docker.com/
+
+2. Wejdź do folderu Projekt/
+
+3. Zbuduj kontener:
 
    ```bash
    docker-compose build
    ```
 
-2. Wykonaj migracje bazy danych:
+4. Wykonaj migracje bazy danych:
 
    ```bash
    docker-compose run web python manage.py migrate
    ```
 
-3. Uruchom aplikację:
+5. Uruchom aplikację:
 
    ```bash
    docker-compose up
    ```
 
-4. Wejdź na stronę: [http://localhost:8000](http://localhost:8000)
+6. Wejdź na stronę: [http://localhost:8000](http://localhost:8000)
 
 ---
 
