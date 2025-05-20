@@ -73,7 +73,7 @@ Projekt/
    docker-compose up
    ```
 
-4. Wejdź na stronę: [http://0.0.0.0:8000](http://0.0.0.0:8000)
+4. Wejdź na stronę: [http://localhost:8000](http://localhost:8000)
 
 ---
 
